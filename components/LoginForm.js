@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import axios from "axios";
 
-export default function LoginPage(props) {
+export default function LoginForm(props) {
     const usernameInputRef = useRef();
     const passwordInputRef = useRef();
 
-    function loginHandler(event) {
+    function authenticationRequest(event) {
         event.preventDefault();
+
         const username = usernameInputRef.current.value;
         const password = passwordInputRef.current.value;
 
@@ -15,11 +16,9 @@ export default function LoginPage(props) {
                 username: username,
                 password: password,
             })
-            .then((response) => {
-                console.log("response:", response);
-                document.cookie = "token=" + response.data.key;
-                console.log(document.cookie);
-                window.location.replace("/");
+            .then((res) => {
+                document.cookie = "token=" + res.data.key;
+                props.loginHandler();
             })
             .catch((error) => {
                 console.log("login error:", error);
@@ -29,7 +28,7 @@ export default function LoginPage(props) {
     return (
         <div>
             <h1>Login</h1>
-            <form onSubmit={loginHandler}>
+            <form onSubmit={authenticationRequest}>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input
