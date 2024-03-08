@@ -1,21 +1,27 @@
 import classes from "./MainHeader.module.css";
 import axios from "axios";
-import { useState } from "react";
-import AuthModal from "./LoginForm";
+import { useState, useEffect } from "react";
+import AuthForm from "./AuthForm";
 
 export default function MainHeader(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [activeModal, setActiveModal] = useState(false);
 
-    function showModal(event) {
-        event.preventDefault();
-        setActiveModal(true);
-    }
-
-    function authHandler() {
-        setIsAuthenticated(true);
-        setActiveModal(false);
-    }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            let token;
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                while (cookie.charAt(0) == " ") {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf("token") == 0) {
+                    token = cookie.substring(6);
+                }
+            }
+            setIsAuthenticated(!!token);
+        }
+    }, []);
 
     function logoutHandler(event) {
         event.preventDefault();
@@ -35,13 +41,17 @@ export default function MainHeader(props) {
     return (
         <header>
             <p>InstaBasket</p>
-            {activeModal && <AuthModal authHandler={authHandler} />}
             <div className={classes.login}>
                 {!isAuthenticated && (
-                    <button onClick={showModal}>Sign In/Register</button>
+                    <AuthForm setIsAuthenticated={setIsAuthenticated} />
                 )}
                 {isAuthenticated && (
-                    <button onClick={logoutHandler}>Sign Out</button>
+                    <button
+                        onClick={logoutHandler}
+                        className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                    >
+                        Sign Out
+                    </button>
                 )}
             </div>
         </header>
