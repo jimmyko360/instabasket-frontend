@@ -109,20 +109,22 @@ export default function AuthForm(props) {
                                 leaveTo="opacity-0 scale-95"
                             >
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <Dialog.Title
-                                        as="h3"
-                                        className="text-lg font-medium leading-6 text-gray-900"
-                                        onClick={login}
-                                    >
-                                        Sign In
-                                    </Dialog.Title>
-                                    <Dialog.Title
-                                        as="h3"
-                                        className="text-lg font-medium leading-6 text-gray-900"
-                                        onClick={register}
-                                    >
-                                        Register
-                                    </Dialog.Title>
+                                    <div className="flex">
+                                        <Dialog.Title
+                                            as="h3"
+                                            className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                            onClick={login}
+                                        >
+                                            Sign In
+                                        </Dialog.Title>
+                                        <Dialog.Title
+                                            as="h3"
+                                            className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                            onClick={register}
+                                        >
+                                            Register
+                                        </Dialog.Title>
+                                    </div>
                                     <form onSubmit={submitHandler}>
                                         <div className="mt-2">
                                             <div>
@@ -134,6 +136,7 @@ export default function AuthForm(props) {
                                                     required
                                                     id="username"
                                                     ref={usernameInputRef}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 />
                                             </div>
                                             <div>
@@ -145,6 +148,8 @@ export default function AuthForm(props) {
                                                     required
                                                     id="password"
                                                     ref={passwordInputRef}
+                                                    autocomplete="off"
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 />
                                             </div>
                                             {newUser && (
@@ -159,6 +164,8 @@ export default function AuthForm(props) {
                                                         ref={
                                                             confirmPasswordInputRef
                                                         }
+                                                        autocomplete="off"
+                                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                     />
                                                 </div>
                                             )}
