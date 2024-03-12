@@ -1,7 +1,7 @@
-import classes from "./MainHeader.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import AuthForm from "./AuthForm";
+import LoggedInHeader from "./LoggedInHeader";
 
 export default function MainHeader(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,21 +39,20 @@ export default function MainHeader(props) {
     }
 
     return (
-        <header>
+        <header className="flex justify-between">
             <p>InstaBasket</p>
-            <div className={classes.login}>
-                {!isAuthenticated && (
-                    <AuthForm setIsAuthenticated={setIsAuthenticated} />
-                )}
-                {isAuthenticated && (
-                    <button
-                        onClick={logoutHandler}
-                        className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-                    >
-                        Sign Out
-                    </button>
-                )}
-            </div>
+            <LoggedInHeader isAuthenticated={isAuthenticated} />
+            {!isAuthenticated && (
+                <AuthForm setIsAuthenticated={setIsAuthenticated} />
+            )}
+            {isAuthenticated && (
+                <button
+                    onClick={logoutHandler}
+                    className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                >
+                    Sign Out
+                </button>
+            )}
         </header>
     );
 }
