@@ -1,3 +1,4 @@
+import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import AuthForm from "./AuthForm";
@@ -40,7 +41,7 @@ export default function MainHeader(props) {
 
     return (
         <header className="flex justify-between">
-            <p>InstaBasket</p>
+            <Link href={"/"}>InstaBasket</Link>
             <LoggedInHeader isAuthenticated={isAuthenticated} />
             {!isAuthenticated && (
                 <AuthForm setIsAuthenticated={setIsAuthenticated} />
