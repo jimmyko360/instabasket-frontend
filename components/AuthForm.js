@@ -144,7 +144,7 @@ export default function AuthForm(props) {
                                                     Password
                                                 </label>
                                                 <input
-                                                    type="text"
+                                                    type="password"
                                                     required
                                                     id="password"
                                                     ref={passwordInputRef}
@@ -158,7 +158,7 @@ export default function AuthForm(props) {
                                                         Confirm Password
                                                     </label>
                                                     <input
-                                                        type="text"
+                                                        type="password"
                                                         required={newUser}
                                                         id="confirmpassword"
                                                         ref={
