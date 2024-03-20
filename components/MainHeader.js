@@ -3,9 +3,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import AuthForm from "./AuthForm";
 import LoggedInHeader from "./LoggedInHeader";
+import { useRouter } from "next/router";
 
 export default function MainHeader(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -24,19 +26,18 @@ export default function MainHeader(props) {
         }
     }, []);
 
-    function logoutHandler(event) {
+    async function logoutHandler(event) {
         event.preventDefault();
-        console.log(event.target.value);
-        document.cookie =
-            "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        axios
-            .post("http://localhost:8000/dj-rest-auth/logout/")
-            .then((res) => {
-                setIsAuthenticated(false);
-            })
-            .catch((error) => {
-                console.log("logout error:", error);
-            });
+
+        try {
+            await axios.post("http://localhost:8000/dj-rest-auth/logout/");
+            document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            setIsAuthenticated(false);
+            router.push("/");
+        } catch (error) {
+            console.log("logout error:", error);
+        }
     }
 
     return (
