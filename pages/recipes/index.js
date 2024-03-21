@@ -6,7 +6,7 @@ export default function RecipesPage(props) {
         <div>
             {recipes.results.map((recipe) => (
                 <div key={recipe.id} className="flex">
-                    <p>{recipe.name}</p>
+                    <p url={recipe.url}>{recipe.name}</p>
                     <p>{recipe.last_modified}</p>
                     <p>{recipe.created_on}</p>
                 </div>
@@ -25,19 +25,6 @@ export async function getServerSideProps(context) {
                 Authorization: token,
             },
         });
-
-        for (const result of response.data.results) {
-            let ingredientsData = [];
-            for (const ingredient of result.ingredients) {
-                let ingredientResponse = await axios.get(ingredient, {
-                    headers: {
-                        Authorization: token,
-                    },
-                });
-                ingredientsData.push(ingredientResponse.data);
-            }
-            result.ingredientsData = ingredientsData;
-        }
 
         recipes = response.data;
     } catch (error) {
