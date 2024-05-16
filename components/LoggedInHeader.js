@@ -27,17 +27,17 @@ export default function LoggedInHeader(props) {
     return (
         <>
             {props.isAuthenticated && (
-                <div className="w-36 sm:w-2/12 md:w-96">
-                    <div className="sm:flex sm:justify-between hidden">
+                <div className="md:w-96">
+                    <div className="md:flex md:justify-between hidden">
                         <Link href={"/ingredients"}>Ingredients</Link>
                         <Link href={"/quantities"}>Quantities</Link>
                         <Link href={"/recipes"}>Recipes</Link>
                         <Link href={"/lists"}>Shopping Lists</Link>
                     </div>
-                    <div className="sm:hidden">
+                    <div className="md:hidden w-36">
                         <Listbox value={selected} onChange={changePage}>
                             <div>
-                                <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-4 pr-4 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                                <Listbox.Button className="relative w-full justify-center cursor-default rounded-lg bg-white py-2 pl-4 pr-4 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 md:text-sm">
                                     <span className="block truncate">
                                         {selected.name}
                                     </span>
@@ -48,12 +48,12 @@ export default function LoggedInHeader(props) {
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0"
                                 >
-                                    <Listbox.Options className="w-36 absolute mt-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+                                    <Listbox.Options className="w-36 absolute mt-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none md:text-sm">
                                         {pages.map((page, index) => (
                                             <Listbox.Option
                                                 key={index}
                                                 className={({ active }) =>
-                                                    `relative cursor-default select-none py-2 pl-4 pr-4 ${
+                                                    `relative flex justify-center cursor-default select-none py-2 pl-4 pr-4 ${
                                                         active
                                                             ? "bg-amber-100 text-amber-900"
                                                             : "text-gray-900"
