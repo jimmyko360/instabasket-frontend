@@ -3,9 +3,9 @@ import MainHeader from "./MainHeader";
 
 export default function Layout(props) {
     return (
-        <Fragment>
+        <div className="flex flex-col m-auto max-w-screen-xl">
             <MainHeader />
             <main>{props.children}</main>
-        </Fragment>
+        </div>
     );
 }
