@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function IngredientsPage(props) {
+export default function IngredientsListPage(props) {
     return (
         <div>
             {props.ingredients.map((ingredient) => (

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function RecipesPage(props) {
+export default function RecipesListPage(props) {
     const { recipes } = props;
     return (
         <div>

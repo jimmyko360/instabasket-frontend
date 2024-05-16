@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function QuantitiesPage(props) {
+export default function QuantitiesListPage(props) {
     const { quantities } = props;
     return (
         <div>
