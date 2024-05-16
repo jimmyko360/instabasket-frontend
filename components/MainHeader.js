@@ -42,7 +42,9 @@ export default function MainHeader(props) {
 
     return (
         <header className="flex justify-between">
-            <Link href={"/"}>InstaBasket</Link>
+            <Link href={"/"} className="my-auto">
+                InstaBasket
+            </Link>
             <LoggedInHeader isAuthenticated={isAuthenticated} />
             {!isAuthenticated && (
                 <AuthForm setIsAuthenticated={setIsAuthenticated} />
