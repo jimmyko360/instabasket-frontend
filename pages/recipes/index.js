@@ -3,7 +3,7 @@ import axios from "axios";
 export default function RecipesListPage(props) {
     const { recipes } = props;
     return (
-        <div>
+        <div className="p-4">
             <div className="flex">
                 <p className="w-1/3 font-bold">Name</p>
                 <p className="w-1/3 font-bold">Updated</p>
