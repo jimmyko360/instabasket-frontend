@@ -3,12 +3,19 @@ import axios from "axios";
 export default function ListsListPage(props) {
     const { lists } = props;
     return (
-        <div>
+        <div className="p-4">
+            <div className="flex">
+                <p className="w-1/3 font-bold">Name</p>
+                <p className="w-1/3 font-bold">Updated</p>
+                <p className="w-1/3 font-bold">Created</p>
+            </div>
             {lists.results.map((list) => (
                 <div key={list.id} className="flex">
-                    <p url={list.url}>{list.title}</p>
-                    <p>{list.last_modified}</p>
-                    <p>{list.created_on}</p>
+                    <p className="w-1/3" url={list.url}>
+                        {list.title}
+                    </p>
+                    <p className="w-1/3">{list.last_modified}</p>
+                    <p className="w-1/3">{list.created_on}</p>
                 </div>
             ))}
         </div>
