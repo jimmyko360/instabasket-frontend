@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default function IngredientsListPage(props) {
     return (
-        <div>
+        <div className="p-4">
+            <p className="font-bold">Name</p>
             {props.ingredients.map((ingredient) => (
                 <p key={ingredient.id}>{ingredient.name}</p>
             ))}
