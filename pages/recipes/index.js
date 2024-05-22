@@ -4,11 +4,18 @@ export default function RecipesListPage(props) {
     const { recipes } = props;
     return (
         <div>
+            <div className="flex">
+                <p className="w-1/3 font-bold">Name</p>
+                <p className="w-1/3 font-bold">Updated</p>
+                <p className="w-1/3 font-bold">Created</p>
+            </div>
             {recipes.results.map((recipe) => (
                 <div key={recipe.id} className="flex">
-                    <p url={recipe.url}>{recipe.name}</p>
-                    <p>{recipe.last_modified}</p>
-                    <p>{recipe.created_on}</p>
+                    <p className="w-1/3" url={recipe.url}>
+                        {recipe.name}
+                    </p>
+                    <p className="w-1/3">{recipe.last_modified}</p>
+                    <p className="w-1/3">{recipe.created_on}</p>
                 </div>
             ))}
         </div>
