@@ -3,12 +3,17 @@ import axios from "axios";
 export default function QuantitiesListPage(props) {
     const { quantities } = props;
     return (
-        <div>
+        <div className="p-4">
+            <div className="flex">
+                <p className="font-bold w-1/2">Ingredient</p>
+                <p className="font-bold w-1/4">Quantity</p>
+                <p className="font-bold w-1/4">Unit</p>
+            </div>
             {quantities.results.map((quantity) => (
                 <div key={quantity.id} className="flex">
-                    <p>{quantity.ingredientData.name}</p>
-                    <p>{quantity.quantity}</p>
-                    <p>{quantity.unit}</p>
+                    <p className="w-1/2">{quantity.ingredientData.name}</p>
+                    <p className="w-1/4">{quantity.quantity}</p>
+                    <p className="w-1/4">{quantity.unit}</p>
                 </div>
             ))}
         </div>
