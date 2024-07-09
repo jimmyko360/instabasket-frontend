@@ -14,7 +14,8 @@ export default function LoggedInHeader(props) {
 
     const router = useRouter();
     const currentPage = pages.filter((page) => {
-        const pageName = router.pathname.match(/^\/[a-zA-Z]+/);
+        const pageName = router.pathname.match(/^\/[a-zA-Z]*/);
+
         return pageName[0] === page.link;
     });
 
